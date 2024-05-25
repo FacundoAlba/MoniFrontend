@@ -1,33 +1,34 @@
-"use client"
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import ClipLoader from 'react-spinners/ClipLoader';
-import * as Yup from 'yup';
-import Layout from '@/components/Layout';
-import { login } from '../../services/authServices';
-import { message } from 'antd/lib';
+"use client";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import ClipLoader from "react-spinners/ClipLoader";
+import * as Yup from "yup";
+import Layout from "@/components/Layout";
+import { login } from "../../services/authServices";
+import { message } from "antd/lib";
 
 const Login = () => {
   const router = useRouter();
 
   const initialValues = {
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   };
 
   const validationSchema = Yup.object({
-    username: Yup.string().required('Ingrese su nombre de usuario'),
-    password: Yup.string().required('Ingrese su contraseña'),
+    username: Yup.string().required("Ingrese su nombre de usuario"),
+    password: Yup.string().required("Ingrese su contraseña"),
   });
 
   const handleSubmit = async (values, { setSubmitting }) => {
     setSubmitting(true);
     try {
       await login(values.username, values.password);
-      router.push('/administracion');
+      router.push("/administracion");
     } catch (error) {
-      const errorMsg = error.response?.data?.detail || 'Usuario o contraseña incorrectos';
+      const errorMsg =
+        error.response?.data?.detail || "Usuario o contraseña incorrectos";
       message.error(errorMsg);
     }
     setSubmitting(false);
@@ -40,7 +41,11 @@ const Login = () => {
       </Head>
 
       <Layout>
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
           {({ isSubmitting }) => (
             <Form className="custom-form">
               <h1 className="title-text">Iniciar Sesión</h1>
@@ -48,16 +53,28 @@ const Login = () => {
               <div className="form-group">
                 <label htmlFor="username">Usuario</label>
                 <Field name="username" type="text" className="text-input" />
-                <ErrorMessage name="username" component="div" className="error" />
+                <ErrorMessage
+                  name="username"
+                  component="div"
+                  className="error"
+                />
               </div>
 
               <div className="form-group">
                 <label htmlFor="password">Contraseña</label>
                 <Field name="password" type="password" className="text-input" />
-                <ErrorMessage name="password" component="div" className="error" />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className="error"
+                />
               </div>
 
-              <button type="submit" className="btn btn-accent" disabled={isSubmitting}>
+              <button
+                type="submit"
+                className="btn btn-accent"
+                disabled={isSubmitting}
+              >
                 Iniciar Sesión
               </button>
 

@@ -1,22 +1,22 @@
 import "@/styles/globals.css";
 
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import { getCurrentUser } from '../services/authServices';
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { getCurrentUser } from "../services/authServices";
 
 function MyApp({ Component, pageProps }) {
-    const router = useRouter();
+  const router = useRouter();
 
-    useEffect(() => {
-        const user = getCurrentUser();
-        const protectedRoutes = ['/administracion'];
-        
-        if (!user && protectedRoutes.includes(router.pathname)) {
-            router.push('/login');
-        }
-    }, [router]);
+  useEffect(() => {
+    const user = getCurrentUser();
+    const protectedRoutes = ["/administracion"];
 
-    return <Component {...pageProps} />;
+    if (!user && protectedRoutes.includes(router.pathname)) {
+      router.push("/login");
+    }
+  }, [router]);
+
+  return <Component {...pageProps} />;
 }
 
 export default MyApp;

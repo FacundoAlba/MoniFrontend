@@ -41,6 +41,7 @@ Esto levantará el servidor de desarrollo de Next.js y podrás acceder a la apli
 ## Comandos útiles
 
 - Para detener todos los contenedores:
+
   ```bash
   docker compose down
   ```

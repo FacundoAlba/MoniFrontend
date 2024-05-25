@@ -1,12 +1,10 @@
-import Image from 'next/image'
+import Image from "next/image";
 
 function Footer() {
   return (
     <footer className="bg-primary-dark">
       <div className="footer">
-        <p className="footer-text">
-          Todas tus finanzas, más fácil.
-        </p>
+        <p className="footer-text">Todas tus finanzas, más fácil.</p>
         <div className="logo-footer">
           <Image
             src="/moni-logo-secondary.svg"
@@ -19,7 +17,7 @@ function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

@@ -1,24 +1,21 @@
-import { Button } from 'antd'
-import Image from 'next/image'
-import Link from 'next/link'
-import { logout } from '@/services/authServices';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { Button } from "antd";
+import Image from "next/image";
+import Link from "next/link";
+import { logout } from "@/services/authServices";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-function Navbar(){
-
+function Navbar() {
   const [showLogout, setShowLogout] = useState(false);
   const router = useRouter();
 
   const handleLogout = () => {
     logout();
-    router.push('/login');
+    router.push("/login");
   };
 
- 
-
   useEffect(() => {
-    const protectedRoutes = ['/administracion'];
+    const protectedRoutes = ["/administracion"];
 
     if (protectedRoutes.includes(router.pathname)) {
       setShowLogout(true);
@@ -32,25 +29,24 @@ function Navbar(){
       <nav className="nav-container">
         <Link href="/">
           <div className="logo-navbar">
-              <Image
-                src="/moni-logo-primary-small.svg"
-                alt="Moni Logo"
-                width={80}
-                height={30}
-                layout="responsive"
-                priority={true}
-              />
-            </div>
-        
+            <Image
+              src="/moni-logo-primary-small.svg"
+              alt="Moni Logo"
+              width={80}
+              height={30}
+              layout="responsive"
+              priority={true}
+            />
+          </div>
         </Link>
         {showLogout && (
-          <button className='btn-logout' onClick={handleLogout}>
+          <button className="btn-logout" onClick={handleLogout}>
             Cerrar Sesión
           </button>
         )}
       </nav>
     </header>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
