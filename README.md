@@ -1,40 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Proyecto Frontend con Next.js
 
-## Getting Started
+Este es un proyecto Frontend configurado para ejecutarse en un contenedor Docker utilizando Docker Compose.
 
-First, run the development server:
+## Prerrequisitos
+
+Asegúrate de tener instalados los siguientes programas en tu sistema:
+
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- Node.js y npm (si no están incluidos en tu contenedor Docker)
+
+## Uso de Docker
+
+### Instalar dependencias
+
+Ejecuta el siguiente comando para instalar las dependencias del proyecto:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker compose run --rm node npm i
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Acceder al shell del contenedor
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Si necesitas acceder al shell del contenedor para realizar tareas específicas, ejecuta:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```bash
+docker compose run --rm --service-ports node bash
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Iniciar la aplicación
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Para iniciar la aplicación, dentro del shell del contenedor, ejecuta:
 
-## Learn More
+```bash
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+Esto levantará el servidor de desarrollo de Next.js y podrás acceder a la aplicación en `http://localhost:3000`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Comandos útiles
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Para detener todos los contenedores:
+  ```bash
+  docker compose down
+  ```
 
-## Deploy on Vercel
+- Para ver los logs de los contenedores:
+  ```bash
+  docker compose logs
+  ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notas adicionales
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Asegúrate de tener configurado correctamente el archivo `docker-compose.yml` para este proyecto.
+- Si necesitas realizar cambios en la configuración de Docker o en el código fuente, consulta la documentación de Docker Compose y Next.js para obtener más detalles.
+
+¡Gracias por utilizar este proyecto! Si tienes alguna pregunta o sugerencia, no dudes en contactar al mantenedor del proyecto.
