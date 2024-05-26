@@ -14,23 +14,23 @@ Asegúrate de tener instalados los siguientes programas en tu sistema:
 
 ### Instalar dependencias
 
-Ejecuta el siguiente comando para instalar las dependencias del proyecto:
+   `docker compose run --rm node npm i`
 
-```bash
-docker compose run --rm node npm i
-```
-
-### Acceder al shell del contenedor
+### Acceder al Shell del Contenedor
 
 Si necesitas acceder al shell del contenedor para realizar tareas específicas, ejecuta:
 
 ```bash
-docker compose run --rm --service-ports node bash
+docker compose run --rm --service-ports frontend sh
 ```
 
-### Iniciar la aplicación
+### Iniciar la Aplicación
 
-Para iniciar la aplicación, dentro del shell del contenedor, ejecuta:
+Dentro del shell del contenedor, ejecuta:
+
+```bash
+npm run build
+```
 
 ```bash
 npm start
@@ -38,10 +38,19 @@ npm start
 
 Esto levantará el servidor de desarrollo de Next.js y podrás acceder a la aplicación en `http://localhost:3000`.
 
-## Comandos útiles
+### Iniciar la Aplicación en Producción
+
+Para iniciar la aplicación en modo de producción, asegúrate de haber construido la imagen y luego ejecuta:
+
+```bash
+docker compose up
+```
+
+Esto levantará el servidor de producción de Next.js y podrás acceder a la aplicación en `http://localhost:3000`.
+
+## Comandos Útiles
 
 - Para detener todos los contenedores:
-
   ```bash
   docker compose down
   ```
@@ -51,9 +60,13 @@ Esto levantará el servidor de desarrollo de Next.js y podrás acceder a la apli
   docker compose logs
   ```
 
-## Notas adicionales
+- Para reconstruir la imagen sin cache:
+  ```bash
+  docker compose build --no-cache
+  ```
+
+## Notas Adicionales
 
 - Asegúrate de tener configurado correctamente el archivo `docker-compose.yml` para este proyecto.
 - Si necesitas realizar cambios en la configuración de Docker o en el código fuente, consulta la documentación de Docker Compose y Next.js para obtener más detalles.
-
-¡Gracias por utilizar este proyecto! Si tienes alguna pregunta o sugerencia, no dudes en contactar al mantenedor del proyecto.
+- Si ves el error "Could not find a production build in the '.next' directory," asegúrate de que el comando `yarn build` o `npm run build` se haya ejecutado correctamente dura

@@ -1,14 +1,11 @@
-FROM node:20
+FROM node:20.10.0
+
+RUN mkdir -p /usr/src/app && cd /usr/src/app
 
 WORKDIR /app
 
-COPY package.json .
-RUN yarn
+COPY package.json /app/package.json
 
-COPY . .
+COPY next.config.mjs /app/next.config.mjs
 
-COPY next.config.mjs .
-
-RUN yarn build
-
-CMD ["yarn", "start"]
+RUN npm install
