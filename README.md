@@ -21,7 +21,7 @@ Asegúrate de tener instalados los siguientes programas en tu sistema:
 Si necesitas acceder al shell del contenedor para realizar tareas específicas, ejecuta:
 
 ```bash
-docker compose run --rm --service-ports frontend bash
+ docker compose run --rm --service-ports node bash
 ```
 
 ### Iniciar la Aplicación
