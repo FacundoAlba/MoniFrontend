@@ -52,7 +52,7 @@ const LoanForm = ({ initialValues, validationSchema, onSubmit }) => {
             className="btn btn-accent w100"
             disabled={isSubmitting}
           >
-            Quiero un préstamo
+            Solicitar préstamo
           </button>
 
           {isSubmitting && (
