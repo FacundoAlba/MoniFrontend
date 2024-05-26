@@ -12,7 +12,7 @@ Asegúrate de tener instalados los siguientes programas en tu sistema:
 
 ## Uso de Docker
 
-### Instalar dependencias
+### Construir la Imagen
 
    `docker compose run --rm node npm i`
 
@@ -21,7 +21,7 @@ Asegúrate de tener instalados los siguientes programas en tu sistema:
 Si necesitas acceder al shell del contenedor para realizar tareas específicas, ejecuta:
 
 ```bash
-docker compose run --rm --service-ports frontend sh
+docker compose run --rm --service-ports frontend bash
 ```
 
 ### Iniciar la Aplicación
