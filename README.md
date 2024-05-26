@@ -12,25 +12,35 @@ Asegúrate de tener instalados los siguientes programas en tu sistema:
 
 ## Uso de Docker
 
-### Instalar dependencias
+### Construir la Imagen
 
-Ejecuta el siguiente comando para instalar las dependencias del proyecto:
+Ejecuta el siguiente comando para construir la imagen Docker del proyecto:
 
 ```bash
-docker compose run --rm node npm i
+docker build -t {$nombre-del-proyecto} .
 ```
+
+### Levantar la aplicación en producción
+
+Para levantar la aplicación en modo producción, ejecuta:
+
+```bash
+docker compose up
+```
+
+Esto levantará el servidor de producción de Next.js y podrás acceder a la aplicación en `http://localhost:3000`.
 
 ### Acceder al shell del contenedor
 
 Si necesitas acceder al shell del contenedor para realizar tareas específicas, ejecuta:
 
 ```bash
-docker compose run --rm --service-ports node bash
+docker compose run --rm --service-ports frontend bash
 ```
 
 ### Iniciar la aplicación
 
-Para iniciar la aplicación, dentro del shell del contenedor, ejecuta:
+Para iniciar la aplicación en modo desarrollo, dentro del shell del contenedor, ejecuta:
 
 ```bash
 npm start
