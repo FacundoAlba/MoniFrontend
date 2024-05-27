@@ -116,33 +116,27 @@ const LoanAdmin = () => {
     {
       title: "ID",
       dataIndex: "id",
-      sorter: true,
     },
     {
       title: "DNI",
       dataIndex: "dni",
-      sorter: true,
     },
     {
       title: "Nombre Completo",
       dataIndex: "full_name",
-      sorter: true,
     },
     {
       title: "Género",
       dataIndex: "gender",
-      sorter: true,
     },
     {
       title: "Monto",
       dataIndex: "amount",
-      sorter: true,
       render: (amount) => `$${amount}`,
     },
     {
       title: "Estado del Préstamo",
       dataIndex: "loan_status",
-      sorter: true,
       align: "center",
       render: (status) => <TagStatus loanStatus={status} />,
     },
