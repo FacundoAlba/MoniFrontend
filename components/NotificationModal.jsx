@@ -1,5 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
+import Image from "next/image";
 
 Modal.setAppElement("#__next");
 
@@ -15,7 +16,7 @@ const NotificationModal = ({
       case "approve":
         return {
           title: `¡Felicidades ${userName}!`,
-          message: `Tenés un préstamo preaprobado por el monto de ${amount}!`,
+          message: `Tenés un préstamo preaprobado por el monto de $${amount}!`,
           image: "/moni-exito.svg",
         };
       case "rejected":
@@ -44,7 +45,7 @@ const NotificationModal = ({
       className="modal"
       overlayClassName="overlay"
     >
-      <img src={image} alt={status} className="modal-image" />
+      <Image src={image} alt={status} className="modal-image" />
       <div className="modal-content">
         <h2 className="txt-subtitle">{title}</h2>
         <p>{message}</p>
